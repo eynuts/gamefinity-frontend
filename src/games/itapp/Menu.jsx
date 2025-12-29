@@ -19,7 +19,7 @@ export default function Menu({ onClose, onExit, userData, setUserData }) {
     
     setLoading(true);
     try {
-      const res = await axios.put(`http://localhost:5000/api/itapp/user/${userData.uid}`, { 
+      const res = await axios.put(`https://gamefinity-backend.onrender.com/api/itapp/user/${userData.uid}`, { 
         username: newUsername 
       });
       setUserData(res.data);
@@ -182,4 +182,5 @@ export default function Menu({ onClose, onExit, userData, setUserData }) {
       </motion.div>
     </div>
   );
+
 }
