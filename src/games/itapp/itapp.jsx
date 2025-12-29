@@ -12,7 +12,7 @@ import { io } from "socket.io-client";
 import { ref, get, update } from "firebase/database";
 import { db } from "../../firebase";
 
-const socket = io("http://localhost:5000/itapp");
+const socket = io("https://gamefinity-backend.onrender.com/itapp");
 
 export default function ItApp({ onExitToHome }) {
   const [showLobby, setShowLobby] = useState(false);
@@ -70,7 +70,7 @@ export default function ItApp({ onExitToHome }) {
       if (!auth.currentUser) return;
       const { uid, email } = auth.currentUser;
       try {
-        const res = await axios.post("http://localhost:5000/api/itapp/user", { uid, email });
+        const res = await axios.post("https://gamefinity-backend.onrender.com/api/itapp/user", { uid, email });
         setUserData(res.data);
       } catch (err) {
         console.error("Error saving user:", err);
@@ -262,3 +262,4 @@ export default function ItApp({ onExitToHome }) {
     </div>
   );
 }
+
