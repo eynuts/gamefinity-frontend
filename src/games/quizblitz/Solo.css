@@ -1,0 +1,166 @@
+/* src/games/quizblitz/Solo.css */
+
+.solo-screen {
+    background-image: url("../../assets/quizblitz/bg.png");
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; 
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px 20px 0; 
+    box-sizing: border-box;
+    color: white; 
+    font-family: 'Arial', sans-serif; 
+}
+
+/* --- Header --- */
+.solo-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.solo-logo {
+    width: 240px; 
+    height: auto;
+}
+
+.solo-tagline {
+    font-size: 1.1em; 
+    font-weight: 500; 
+    letter-spacing: 1.5px;
+    margin-top: 2px; 
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.9); 
+}
+
+/* --- Options Container --- */
+.solo-options-container {
+    display: flex;
+    gap: 12px; 
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 10px 0; 
+}
+
+.solo-option-button {
+    position: relative; /* Required to position the checkmark */
+    border: none;
+    border-radius: 25px;
+    width: 200px; 
+    height: 120px; 
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, outline 0.1s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
+}
+
+.solo-option-button:hover {
+    transform: translateY(-3px);
+}
+
+/* --- The Selection Indicator (Checkmark) --- */
+.solo-selection-checkmark {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ffffff;
+    color: #2ecc71; /* Green check */
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    z-index: 10;
+    animation: soloPopIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes soloPopIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.solo-active {
+    outline: 4px solid #ffffff;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Category Colors */
+.solo-cat-yellow { background: linear-gradient(135deg, #FFB74D, #FAD02E); }
+.solo-cat-teal   { background: linear-gradient(135deg, #48C9B0, #1ABC9C); }
+.solo-cat-red    { background: linear-gradient(135deg, #E74C3C, #C0392B); }
+.solo-cat-blue   { background: linear-gradient(135deg, #5DADE2, #2980B9); }
+
+.solo-icon { margin-bottom: 5px; display: flex; align-items: center; }
+.solo-category-img { width: 55px; height: 55px; object-fit: contain; }
+.solo-text { font-size: 0.75em; letter-spacing: 1px; text-transform: uppercase; }
+
+/* --- Start Button Area --- */
+.solo-action-area { margin-bottom: 5px; }
+
+.solo-start-button {
+    background: linear-gradient(to bottom, #5ce65c, #2e7d32);
+    border: none;
+    padding: 12px 50px; 
+    border-radius: 40px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+.solo-start-button:hover { transform: scale(1.05); }
+
+/* --- Footer --- */
+.solo-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px; 
+    flex-shrink: 0; 
+}
+
+.solo-player-profile { display: flex; align-items: center; gap: 8px; }
+.solo-profile-placeholder, .solo-profile-img {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; background-color: #2980B9;
+}
+
+.solo-player-name { font-size: 1em; margin-right: 10px; }
+.solo-stat-level { color: #FFC107; font-size: 0.85em; }
+
+.solo-secondary-nav { display: flex; gap: 12px; align-items: center; }
+.solo-nav-icon img { width: 40px; height: 40px; object-fit: contain; cursor: pointer; opacity: 0.8; }
+.solo-nav-icon img:hover { opacity: 1; }
+
+.solo-back-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 6px 18px;
+    border-radius: 18px;
+    font-weight: bold;
+    font-size: 0.9em;
+    cursor: pointer;
+}

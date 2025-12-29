@@ -1,0 +1,289 @@
+/* src/admin/AdminGame.css */
+
+/* GAME ANALYTICS DASHBOARD 
+   - Theme: High-Contrast Dark Cards (Optimized for Visibility)
+   - Component: Progress Visualizers & Multi-Game Grid
+*/
+
+:root {
+    --game-bg: #f4f7fa;
+    --game-card: #1a202c; /* Updated to dark theme matches your screenshot */
+    --game-text-white: #ffffff;
+    --game-text-muted: #a0aec0;
+    --game-border: rgba(255, 255, 255, 0.1);
+    --game-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    --game-radius: 20px;
+  }
+  
+  .admin-game-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 24px 30px;
+    background-color: var(--game-bg);
+    gap: 24px;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  /* --- Header Section --- */
+  .game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  
+  .header-info h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 850;
+    color: #2d3748; /* Dark text for the light dashboard background */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: -0.03em;
+  }
+  
+  .title-icon {
+    color: #6366f1;
+  }
+  
+  .header-info p {
+    margin: 5px 0 0 0;
+    color: #718096;
+    font-size: 0.95rem;
+  }
+  
+  .stat-pill {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #4a5568;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  }
+  
+  .stat-pill strong {
+    color: #6366f1;
+    font-size: 1.1rem;
+  }
+  
+  /* --- Game Cards Grid --- */
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    flex: 1;
+  }
+  
+  .game-card {
+    background: var(--game-card);
+    border-radius: var(--game-radius);
+    border: 1px solid var(--game-border);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--game-shadow);
+    overflow: hidden;
+  }
+  
+  .game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* --- Card Top Section --- */
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .icon-box {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+  
+  /* FIX: Ensure Game Title is visible */
+  .game-card-name {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--game-text-white) !important; 
+  }
+  
+  .status-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #68d391;
+    background: rgba(104, 211, 145, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+  
+  .trend-bg-icon {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    font-size: 6rem;
+    opacity: 0.05;
+    color: white;
+    transform: rotate(-15deg);
+  }
+  
+  /* --- Card Body --- */
+  .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .main-stat {
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--game-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  /* FIX: Ensure Big Player Count is visible */
+  .player-count-display {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 5px 0 0 0;
+    color: var(--game-text-white) !important;
+    line-height: 1;
+  }
+  
+  .sub-stats-row {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .sub-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sub-label {
+    font-size: 0.7rem;
+    color: var(--game-text-muted);
+    text-transform: uppercase;
+  }
+  
+  .sub-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--game-text-white);
+  }
+  
+  .v-divider {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* --- Progress Bar --- */
+  .engagement-section {
+    margin-top: auto;
+  }
+  
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--game-text-muted);
+  }
+  
+  .bar-container {
+    height: 8px;
+    background: #2d3748;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* --- Card Footer --- */
+  .card-footer {
+    margin-top: 24px;
+  }
+  
+  .details-btn {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--game-text-white);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .details-btn:hover {
+    background: white;
+    color: #1a202c;
+    border-color: white;
+    transform: translateY(-2px);
+  }
+  
+  /* --- Footer Area --- */
+  .game-footer-info {
+    margin-top: auto;
+    padding: 15px;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #718096;
+    font-size: 0.85rem;
+  }
+  
+  /* --- Responsive Layout --- */
+  @media (max-width: 1200px) {
+    .game-grid { grid-template-columns: repeat(2, 1fr); }
+    .admin-game-container { overflow-y: auto; height: auto; }
+  }
+  
+  @media (max-width: 768px) {
+    .game-grid { grid-template-columns: 1fr; }
+    .game-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+  }

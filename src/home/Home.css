@@ -1,0 +1,199 @@
+/* src/home/Home.css - Final Consolidated Code for Better UI (with Bootstrap .card-body Fix) */
+* {
+    font-family: 'Poppins', sans-serif, Arial, sans-serif;
+    box-sizing: border-box; 
+}
+ 
+body {
+    background: linear-gradient(135deg, #000428, #004e92);
+    color: white;
+    overflow-x: hidden;
+}
+ 
+nav {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+ 
+.navbar-brand {
+    font-weight: 700;
+    color: #00c6ff !important;
+    font-size: 1.5rem;
+}
+.navbar .btn {
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: none;
+    padding: 5px 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar .btn:hover {
+    background-color: rgba(0, 198, 255, 0.2);
+    color: #00c6ff;
+  }
+  
+.logo-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+.logout-btn {
+    background: #ff4b4b;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 12px;
+    transition: 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logout-btn:hover {
+    background: #e04343;
+    transform: translateY(-2px);
+  }
+  
+  .logout-btn:active {
+    background: #c73737;
+    transform: scale(0.97);
+  }
+   
+header {
+    text-align: center;
+    padding: 100px 20px;
+}
+ 
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+ 
+header p {
+    color: #d8e3ff;
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+ 
+.game-section {
+    padding: 60px 0;
+    text-align: center;
+}
+ 
+/* --- START GAME CARD STYLES (Fixed Inconsistency) --- */
+.game-card {
+    background: #0e1a3a !important;
+    border: 1px solid rgba(0, 114, 255, 0.3) !important; /* add !important */
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+    height: 100%;
+    overflow: hidden;
+    color: #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* keeps buttons at bottom */
+    height: 100%; /* fill parent column */
+}
+
+
+/* 2. CRITICAL FIX: Target the Bootstrap .card-body to eliminate the white background */
+.game-card .card-body {
+    /* Set to the standard card background color and use !important to override Bootstrap */
+    background-color: #0e1a3a !important; 
+    /* Padding is already defined by Bootstrap, but we ensure the dark color is applied */
+}
+
+.game-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 0 30px #00c6ff, 0 10px 20px rgba(0, 114, 255, 0.7); 
+    background: #15244d; 
+    color: #e6e6e6; 
+}
+
+/* 3. CRITICAL FIX: Ensure the .card-body matches the hover background color */
+.game-card:hover .card-body {
+    background-color: #15244d !important; 
+}
+ 
+.game-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    background-color: #0d1226; 
+    border-top-left-radius: 19px;
+    border-top-right-radius: 19px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+ 
+.game-card:hover img {
+    transform: scale(1.02);
+}
+
+.game-card h5 {
+    color: #4dc2ff;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    transition: color 0.4s;
+}
+
+.game-card:hover h5 {
+    color: #00c6ff !important; 
+}
+ 
+.game-card p {
+    color: #b0c0e0;
+    /* Removed padding from p element to rely on card-body padding */
+    min-height: 45px;
+    line-height: 1.4;
+    transition: color 0.4s;
+}
+
+.game-card:hover p {
+    color: #fff !important; 
+}
+ 
+.btn-play {
+    background: linear-gradient(90deg, #3876ff, #00c6ff);
+    color: white;
+    border: none;
+    border-radius: 30px; 
+    padding: 12px 30px; 
+    margin: 20px 0 25px 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+ 
+.btn-play:hover {
+    background: linear-gradient(90deg, #00c6ff, #3876ff);
+    box-shadow: 0 0 15px #00c6ff;
+    transform: translateY(-2px);
+}
+/* --- END GAME CARD STYLES --- */
+ 
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #a8b2d1;
+    background: rgba(0,0,0,0.3);
+    margin-top: 50px;
+}
+ 
+.modal-content {
+    background: rgba(0,0,50,0.95);
+    color: white;
+    border-radius: 15px;
+    border: 1px solid #00c6ff;
+}

@@ -1,0 +1,243 @@
+/* src/games/quizblitz/SoloQuiz.css */
+
+.solo-quiz-screen {
+    background-image: url("../../assets/quizblitz/bg.png");
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 6px 14px;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ================= HEADER ================= */
+.solo-quiz-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0; /* 🔥 */
+}
+
+.solo-quiz-logo {
+    width: 250px;
+    height: auto;
+    margin-bottom: 0; /* 🔥 */
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+}
+
+.solo-quiz-progress-bar {
+    width: 100%;
+    max-width: 380px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.solo-quiz-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    transition: width 0.3s ease;
+}
+
+.solo-quiz-count {
+    margin-top: 0px; /* 🔽 */
+    font-size: 0.6em;
+    font-weight: 800;
+    letter-spacing: 1px;
+    opacity: 0.85;
+}
+
+/* ================= TIMER ================= */
+.solo-quiz-timer-container {
+    margin: 1px 0 0; /* 🔥 NO bottom margin */
+    margin-top: -60px;
+}
+
+.solo-quiz-timer-circle {
+    width: 42px;
+    height: 42px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.solo-quiz-timer-text {
+    font-size: 1.1em;
+    font-weight: 900;
+}
+
+.solo-quiz-timer-circle.low-time {
+    border-color: #ff4757;
+    color: #ff4757;
+    animation: soloPulse 0.5s infinite alternate;
+}
+
+@keyframes soloPulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+/* ================= MAIN ================= */
+.solo-quiz-main {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px; /* 🔥 KEY FIX */
+    margin-top: 10px;
+    
+}
+
+/* ================= QUESTION ================= */
+.solo-quiz-question-box {
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    padding: 12px 18px;
+    border-radius: 16px;
+    text-align: center;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.solo-quiz-question-box p {
+    font-size: 1.05em;
+    line-height: 1.25;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* ================= CHOICES ================= */
+.solo-quiz-choices-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+}
+
+.solo-quiz-choice-button {
+    background: rgba(255, 255, 255, 0.95);
+    color: #2d3436;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    font-weight: 700;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.12);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.solo-quiz-choice-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 8px rgba(0,0,0,0.18);
+}
+
+.solo-quiz-choice-button:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.12);
+}
+
+.solo-choice-letter {
+    background: #0984e3;
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    font-weight: 800;
+    font-size: 0.75em;
+    flex-shrink: 0;
+}
+
+/* ================= FOOTER ================= */
+.solo-quiz-footer {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 18px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 16px 16px 0 0;
+}
+
+.solo-quiz-avatar-placeholder {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #0984e3, #74b9ff);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 0.85em;
+}
+
+.solo-score-value {
+    font-size: 1.55em;
+    font-weight: 900;
+    color: #f1c40f;
+}
+/* ================= FEEDBACK STATES ================= */
+
+/* Correct Answer: Green Background */
+.solo-quiz-choice-button.correct {
+    background: #2ecc71 !important;
+    color: white !important;
+    border: none;
+}
+
+/* Ensure the blue letter box also changes to white for better contrast */
+.solo-quiz-choice-button.correct .solo-choice-letter {
+    background: white !important;
+    color: #2ecc71 !important;
+}
+
+/* Wrong Answer: Red Background */
+.solo-quiz-choice-button.wrong {
+    background: #ff4757 !important;
+    color: white !important;
+    border: none;
+    animation: soloShake 0.4s ease-in-out;
+}
+
+.solo-quiz-choice-button.wrong .solo-choice-letter {
+    background: white !important;
+    color: #ff4757 !important;
+}
+
+/* Shake Animation for Wrong Answers */
+@keyframes soloShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+/* Optional: Dim unselected choices after answering */
+.solo-quiz-choice-button:disabled:not(.correct):not(.wrong) {
+    opacity: 0.6;
+    cursor: default;
+}

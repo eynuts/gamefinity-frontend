@@ -1,0 +1,426 @@
+/* Universal Reset and Scroll Lock Class */
+html, body, #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Locks the scroll on the main platform page when the component is mounted */
+body.no-scroll {
+    overflow: hidden !important; 
+    position: fixed; 
+    width: 100%;
+}
+
+/* --- Global Variables and Base Container --- */
+:root {
+    --color-dark-bg: #14161f; 
+    --color-text-primary: #e0e0e0; 
+    --color-green-neon: #39ff14; 
+    --color-blue-neon: #00ffff; 
+    --color-section-bg: rgba(255, 255, 255, 0.05); 
+    --color-border: rgba(255, 255, 255, 0.1); 
+    --color-dark-text: #a0a0a0; 
+    
+    /* SCALING FACTOR ADJUSTMENT: 0.9 (10% smaller UI elements) */
+    --scale-factor: 0.9; 
+
+    /* Neon Colors for Slots */
+    --neon-cyan: #00ffff;
+    --neon-green: #39ff14;
+    --neon-yellow: #ffff33; 
+    --neon-orange: #ff9900;
+    --neon-pink: #ff00ff;
+    --neon-purple: #9900ff;
+    --neon-blue: #3333ff; 
+    
+    /* Dedicated variable for the maximum content width (unscaled) */
+    --max-content-width: 1200px;
+}
+
+.lobby-page-container {
+    font-family: 'Arial', sans-serif;
+    color: var(--color-text-primary);
+    background-color: var(--color-dark-bg);
+    min-height: 100vh;
+    height: 100%; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    overflow: visible; 
+    position: relative;
+}
+
+/* --- Background and Header --- */
+.lobby-background {
+    /* Background Properties (Kept Full-Screen) */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    
+    /* Set width to full and constrain content area */
+    width: 100%;
+    max-width: var(--max-content-width); 
+    
+    margin: 0 auto; 
+    padding: calc(20px * var(--scale-factor)); 
+    position: relative;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    height: 100vh; 
+    box-sizing: border-box;
+}
+
+.lobby-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 0; 
+    z-index: 10;
+}
+
+.lobby-logo-area { line-height: 1; }
+.lobby-logo-text { font-size: calc(24px * var(--scale-factor)); font-weight: bold; }
+.lobby-blue { color: var(--color-blue-neon); }
+.lobby-subtitle { font-size: calc(9px * var(--scale-factor)); color: var(--color-dark-text); letter-spacing: 1px; }
+
+.lobby-search-area { margin-left: auto; }
+.lobby-search-input {
+    padding: calc(5px * var(--scale-factor)) calc(10px * var(--scale-factor));
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    color: var(--color-text-primary);
+    width: calc(220px * var(--scale-factor));
+    font-size: calc(13px * var(--scale-factor));
+}
+.lobby-search-input::placeholder { color: var(--color-dark-text); }
+
+
+/* --- Main Content Layout --- */
+.lobby-main-content {
+    display: flex;
+    /* Centers the grid + sidebar content block */
+    justify-content: center;
+    align-items: flex-start; 
+    flex-grow: 1; 
+    /* Slightly reduced vertical padding to fit on screen */
+    padding-top: calc(30px * var(--scale-factor)); 
+    padding-bottom: calc(20px * var(--scale-factor)); 
+    
+    /* Gap controls space between player grid and sidebar */
+    gap: calc(100px * var(--scale-factor));
+}
+
+/* -------------------------------------------------------------------------- */
+/* PLAYER GRID & CENTER (LEFT)                                  */
+/* -------------------------------------------------------------------------- */
+
+.lobby-player-grid-container {
+    position: relative;
+    width: calc(750px * var(--scale-factor));
+    max-width: calc(750px * var(--scale-factor)); 
+    height: 100%; 
+    margin-right: 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.lobby-player-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr); 
+    
+    /* *** KEY CHANGE 1: Increased column gap to 120px (before scaling) *** */
+    gap: calc(20px * var(--scale-factor)) calc(120px * var(--scale-factor)); 
+    
+    width: 100%;
+    height: 100%;
+    padding: calc(30px * var(--scale-factor));
+    box-sizing: border-box;
+    /* *** KEY CHANGE 2: Reduced side padding to 20px (before scaling) to compensate *** */
+    padding-left: calc(20px * var(--scale-factor)); 
+    padding-right: calc(20px * var(--scale-factor));
+}
+
+.lobby-grid-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.lobby-center-text {
+    font-size: calc(30px * var(--scale-factor));
+    font-weight: bold;
+    color: var(--color-text-primary);
+    margin-bottom: calc(10px * var(--scale-factor));
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); 
+}
+
+.lobby-start-game-btn {
+    padding: calc(10px * var(--scale-factor)) calc(20px * var(--scale-factor));
+    font-size: calc(16px * var(--scale-factor));
+    font-weight: bold;
+    border-radius: 50px; 
+    cursor: pointer;
+    background: rgba(57, 255, 20, 0.2); 
+    border: 2px solid var(--neon-green);
+    box-shadow: 0 0 12px rgba(57, 255, 20, 0.5); 
+    color: var(--color-text-primary);
+    margin-bottom: calc(10px * var(--scale-factor));
+    text-transform: uppercase;
+}
+.lobby-start-game-btn:hover {
+    background: rgba(57, 255, 20, 0.4);
+}
+
+.lobby-waiting-text {
+    font-size: calc(12px * var(--scale-factor));
+    color: var(--color-dark-text);
+}
+
+/* --- Player Slot Styling (The Neon Capsules) --- */
+
+.lobby-player-slot {
+    position: relative; 
+    transform: none !important;
+    
+    width: 100%; 
+    max-width: calc(250px * var(--scale-factor)); 
+    height: calc(60px * var(--scale-factor)); 
+    border-radius: 50px;
+    
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    
+    padding: 0 calc(25px * var(--scale-factor)); 
+    font-size: calc(16px * var(--scale-factor)); 
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 5; 
+    
+    box-sizing: border-box;
+    justify-self: center; 
+    align-self: center;
+}
+
+/* Player Detail elements */
+.lobby-slot-name { 
+    flex-grow: 1; 
+    text-align: left;
+    text-shadow: 0 0 6px currentColor; 
+}
+.lobby-slot-icon { 
+    font-size: calc(20px * var(--scale-factor)); 
+    margin-right: calc(15px * var(--scale-factor)); 
+    opacity: 0.8;
+}
+.lobby-slot-level {
+    font-size: calc(14px * var(--scale-factor));
+    opacity: 0.8;
+    background: rgba(0, 0, 0, 0.5);
+    padding: calc(2px * var(--scale-factor)) calc(8px * var(--scale-factor));
+    border-radius: 10px;
+    border: 1px solid currentColor;
+}
+
+/* Empty Slot Styling */
+.lobby-player-slot.empty {
+    opacity: 0.4;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed var(--color-dark-text) !important;
+    box-shadow: none !important;
+}
+
+/* Neon Glow and Border Colors (Shadow spread adjusted for new scale) */
+.lobby-color-cyan { border: 2px solid var(--neon-cyan); box-shadow: 0 0 15px 4px rgba(0, 255, 255, 0.4); color: var(--neon-cyan); }
+.lobby-color-green { border: 2px solid var(--neon-green); box-shadow: 0 0 15px 4px rgba(57, 255, 20, 0.4); color: var(--neon-green); }
+.lobby-color-yellow { border: 2px solid var(--neon-yellow); box-shadow: 0 0 15px 4px rgba(255, 255, 51, 0.4); color: var(--neon-yellow); }
+.lobby-color-orange { border: 2px solid var(--neon-orange); box-shadow: 0 0 15px 4px rgba(255, 153, 0, 0.4); color: var(--neon-orange); }
+.lobby-color-pink { border: 2px solid var(--neon-pink); box-shadow: 0 0 15px 4px rgba(255, 0, 255, 0.4); color: var(--neon-pink); }
+.lobby-color-purple { border: 2px solid var(--neon-purple); box-shadow: 0 0 15px 4px rgba(153, 0, 255, 0.4); color: var(--neon-purple); }
+.lobby-color-blue { border: 2px solid var(--neon-blue); box-shadow: 0 0 15px 4px rgba(51, 51, 255, 0.4); color: var(--neon-blue); }
+
+
+/* -------------------------------------------------------------------------- */
+/* SIDEBAR (RIGHT)                              */
+/* -------------------------------------------------------------------------- */
+
+.lobby-sidebar {
+    max-width: calc(300px * var(--scale-factor)); 
+    min-width: calc(300px * var(--scale-factor)); 
+    height: 100%;
+    /* Max-height adjusted for better vertical fit */
+    max-height: calc(520px * var(--scale-factor)); 
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-border);
+    border-radius: 10px; 
+    padding: calc(20px * var(--scale-factor));
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.lobby-section-title {
+    font-size: calc(14px * var(--scale-factor));
+    font-weight: bold;
+    color: var(--color-blue-neon);
+    text-transform: uppercase;
+    margin-bottom: calc(15px * var(--scale-factor));
+    text-shadow: 0 0 4px rgba(0, 255, 255, 0.5);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: calc(5px * var(--scale-factor));
+}
+
+.lobby-category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lobby-category-item {
+    padding: calc(8px * var(--scale-factor)) 0;
+    font-size: calc(14px * var(--scale-factor));
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lobby-checkbox {
+    margin-right: calc(10px * var(--scale-factor));
+    font-size: calc(16px * var(--scale-factor));
+}
+
+.lobby-category-color-green { color: var(--neon-green); }
+
+.lobby-sidebar-footer {
+    margin-top: auto;
+    padding-top: calc(20px * var(--scale-factor));
+    border-top: 1px solid var(--color-border);
+}
+
+.lobby-invite-area {
+    margin-bottom: calc(15px * var(--scale-factor));
+}
+
+.lobby-room-label {
+    font-size: calc(11px * var(--scale-factor));
+    color: var(--color-dark-text);
+    margin-bottom: calc(5px * var(--scale-factor));
+}
+
+.lobby-room-input {
+    width: 100%;
+    padding: calc(8px * var(--scale-factor));
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    color: var(--color-text-primary);
+    font-size: calc(14px * var(--scale-factor));
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.lobby-room-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: calc(10px * var(--scale-factor));
+}
+
+.lobby-room-btn {
+    flex-grow: 1;
+    padding: calc(10px * var(--scale-factor)) calc(5px * var(--scale-factor));
+    font-size: calc(13px * var(--scale-factor));
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--color-dark-bg);
+    text-transform: uppercase;
+}
+
+.lobby-public-btn {
+    background: var(--neon-green);
+    box-shadow: 0 0 6px var(--neon-green);
+}
+
+.lobby-private-btn {
+    background: var(--neon-pink);
+    box-shadow: 0 0 6px var(--neon-pink);
+}
+
+/* --- Global Chat Section (Fixed at Bottom) --- */
+.lobby-global-chat-area {
+    width: 100%;
+    max-width: var(--max-content-width); 
+    padding: calc(8px * var(--scale-factor)) calc(20px * var(--scale-factor));
+    border-top: 1px solid var(--color-border);
+    background: rgba(0, 0, 0, 0.7); 
+    z-index: 20;
+    box-sizing: border-box;
+    margin-top: auto; 
+}
+
+.lobby-section-title {
+    font-size: calc(12px * var(--scale-factor));
+    font-weight: bold;
+    color: var(--color-dark-text);
+    text-transform: uppercase;
+    margin-bottom: calc(5px * var(--scale-factor));
+    border-bottom: none; 
+    padding-bottom: 0;
+}
+
+.lobby-chat-message {
+    font-size: calc(13px * var(--scale-factor));
+    margin-top: calc(5px * var(--scale-factor));
+}
+
+.lobby-chat-host {
+    color: var(--neon-green);
+    font-weight: bold;
+}
+/* ===== FINDING LOBBY LOADING ===== */
+.lobby-loading {
+    position: fixed;
+    inset: 0;
+    background: #050b1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(255, 255, 255, 0.2);
+    border-top: 6px solid #00e5ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  .loading-text {
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

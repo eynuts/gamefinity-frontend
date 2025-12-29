@@ -1,0 +1,188 @@
+/* Vote.css */
+
+/* Modal backdrop */
+.vote-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal container */
+  .vote-modal {
+    background-color: #fff;
+    padding: 20px 25px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+  }
+  
+  /* Stage header */
+  .vote-modal h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  /* Instructions text */
+  .vote-modal p {
+    margin: 5px 0;
+    font-size: 0.95em;
+    color: #333;
+  }
+  
+  /* Timer display */
+  .vote-timer {
+    font-weight: bold;
+    color: #d9534f; /* red color for urgency */
+    margin-bottom: 10px;
+    font-size: 1.2em;
+  }
+  
+  /* Vote buttons container */
+  .vote-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  /* Individual vote buttons */
+  .vote-button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .vote-button:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  .vote-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Skip button style */
+  .skip-button {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  
+  .skip-button:hover:not(:disabled) {
+    background-color: #5a6268;
+  }
+  
+  /* Toggle chat button */
+  .toggle-chat-button {
+    margin-top: 10px;
+    padding: 6px 10px;
+    border: none;
+    background-color: #17a2b8;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+  
+  .toggle-chat-button:hover {
+    background-color: #138496;
+  }
+  
+  /* Chat container */
+  .vote-chat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+  }
+  
+  /* Chat messages list */
+  .chat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  /* Individual chat item */
+  .chat-item {
+    font-size: 0.9em;
+    color: #212529;
+    text-align: left;
+  }
+  
+  /* Chat input container */
+  .chat-input {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    padding: 6px 8px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    font-size: 0.9em;
+  }
+  
+  .chat-input button {
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .chat-input button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Vote message after voting */
+  .vote-message {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  /* Result stage - show vote tally */
+  .vote-result {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  
+  .vote-result-item {
+    font-weight: 500;
+    color: #212529;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 8px;
+    border-radius: 5px;
+    background-color: #e9ecef;
+  }
+  

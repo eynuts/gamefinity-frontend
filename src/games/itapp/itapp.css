@@ -1,0 +1,272 @@
+/* Universal Reset */
+html, body, #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Scroll Lock */
+body.no-scroll {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+}
+
+:root {
+    --color-dark-bg: #14161f; 
+    --color-text-primary: #e0e0e0; 
+    --color-green-neon: #39ff14; 
+    --color-blue-neon: #00ffff; 
+    --color-section-bg: rgba(255, 255, 255, 0.05); 
+    --color-border: rgba(255, 255, 255, 0.1); 
+    --color-dark-text: #a0a0a0; 
+    --scale-factor: 0.9;
+}
+
+.itapp-page-container {
+    font-family: 'Arial', sans-serif;
+    color: var(--color-text-primary);
+    background-color: var(--color-dark-bg);
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    overflow: hidden;
+    position: relative;
+}
+
+.itapp-background {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto; 
+    position: relative;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Header --- */
+.itapp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box; 
+    padding: 20px 40px; 
+    z-index: 10;
+}
+
+.itapp-logo-text {
+    font-size: calc(24px * var(--scale-factor));
+    font-weight: bold;
+}
+
+.itapp-blue {
+    color: var(--color-blue-neon);
+}
+
+.itapp-subtitle {
+    font-size: calc(9px * var(--scale-factor));
+    color: var(--color-dark-text);
+    letter-spacing: 1px;
+}
+
+.itapp-menu-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.itapp-menu-btn img {
+    width: 40px;
+    height: 35px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.itapp-menu-btn:hover img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px var(--color-blue-neon));
+}
+
+/* --- Main Content (Buttons) --- */
+.itapp-main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center buttons */
+    align-items: center;
+    width: 100%;
+    max-width: calc(700px * var(--scale-factor)); 
+    margin: 0 auto;
+    margin-top: -50px;
+}
+
+.itapp-game-buttons {
+    display: flex;
+    gap: calc(40px * var(--scale-factor));
+    margin-bottom: calc(30px * var(--scale-factor));
+}
+
+/* RESTORED OLD BUTTON STYLE */
+.itapp-btn {
+    padding: calc(12px * var(--scale-factor)) calc(30px * var(--scale-factor));
+    font-size: calc(16px * var(--scale-factor));
+    font-weight: bold;
+    border-radius: 50px; /* Original pill shape */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+    border: none;
+}
+
+.itapp-create-new-btn {
+    background: rgba(57, 255, 20, 0.2); 
+    border: 2px solid var(--color-green-neon);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.5); 
+}
+
+.itapp-create-new-btn:hover {
+    background: rgba(57, 255, 20, 0.3);
+    box-shadow: 0 0 25px var(--color-green-neon);
+}
+
+.itapp-find-game-btn {
+    background: rgba(0, 255, 255, 0.2); 
+    border: 2px solid var(--color-blue-neon);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); 
+}
+
+.itapp-find-game-btn:hover {
+    background: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 25px var(--color-blue-neon);
+}
+
+/* --- Game Code Area --- */
+.itapp-game-code-area {
+    display: flex;
+    justify-content: center;
+    gap: 0px; /* Joins input and button */
+    margin-bottom: calc(25px * var(--scale-factor)); 
+}
+
+.itapp-game-code-input {
+    padding: calc(10px * var(--scale-factor)) calc(15px * var(--scale-factor));
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--color-border);
+    border-radius: 5px 0 0 5px;
+    color: white;
+    font-size: calc(14px * var(--scale-factor));
+    width: calc(150px * var(--scale-factor));
+    text-align: center;
+}
+
+.itapp-join-via-code-btn {
+    padding: calc(10px * var(--scale-factor)) calc(20px * var(--scale-factor));
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-border);
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    color: white;
+    font-size: calc(12px * var(--scale-factor));
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.itapp-join-via-code-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--color-blue-neon);
+}
+
+/* --- Global Chat (Fixed Bottom) --- */
+.itapp-global-chat-area {
+    width: 100%;
+    max-width: 1200px;
+    padding: 15px 40px;
+    background: rgba(0, 0, 0, 0.8);
+    border-top: 1px solid var(--color-border);
+    position: absolute;
+    bottom: 0;
+}
+
+.itapp-section-title {
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--color-dark-text);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.itapp-chat-message {
+    font-size: 13px;
+}
+
+.itapp-chat-host {
+    color: var(--color-green-neon);
+    font-weight: bold;
+}
+
+.itapp-star-detail-right {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    color: var(--color-blue-neon);
+    opacity: 0.6;
+}
+/* --- Searching Spinner Styles --- */
+.itapp-searching-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.itapp-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(0, 255, 255, 0.1);
+    border-left-color: var(--color-blue-neon);
+    border-radius: 50%;
+    animation: itapp-spin 1s linear infinite;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+@keyframes itapp-spin {
+    to { transform: rotate(360deg); }
+}
+
+.itapp-searching-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-blue-neon);
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    animation: itapp-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes itapp-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.itapp-cancel-search {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-dark-text);
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.2s;
+}
+
+.itapp-cancel-search:hover {
+    color: #ff5733;
+    border-color: #ff5733;
+}

@@ -1,0 +1,169 @@
+/* SoloFinish.css */
+
+.finish-quiz-screen {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: "Poppins", sans-serif;
+    padding-top: 30px;
+    overflow: hidden;
+  }
+  
+  .finish-quiz-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    z-index: 10; 
+  }
+  
+  .finish-quiz-logo {
+    height: 100px;
+    object-fit: contain;
+    margin-top: -60px;
+    /* Gold glow helps bridge the logo to the glass card */
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+    animation: dropIn 0.8s ease-out forwards;
+  }
+  
+  .finish-quiz-result-card {
+    width: 93%;
+    max-width: 480px;
+    
+    /* THE INTEGRATION KEY: 
+       Low opacity background + High blur + Saturation boost 
+    */
+    background: rgba(255, 255, 255, 0.07); 
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    
+    border-radius: 40px;
+    padding: 90px 30px 45px;
+    
+    /* Rim Lighting: Thin border makes it look like glass catching space light */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4),
+                inset 0 0 15px rgba(255, 255, 255, 0.05);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: -75px; /* Your desired overlap */
+    
+    animation: cardFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .finish-quiz-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5); /* Faded white to stay in the background */
+    letter-spacing: 5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  
+  .finish-quiz-final-score {
+    margin-bottom: 20px;
+  }
+  
+  .finish-quiz-final-score span {
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffca28; /* Golden lightning color from your logo */
+    display: block;
+    letter-spacing: 2px;
+  }
+  
+  .finish-quiz-final-score h1 {
+    font-size: 96px; 
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0;
+    line-height: 0.9;
+    letter-spacing: -3px;
+    /* Subtle glow makes the text feel 'energized' */
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  }
+  
+  .finish-quiz-result-text {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+  }
+  
+  .finish-finish-buttons {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .finish-quiz-back-btn {
+    flex: 1;
+    border: none;
+    padding: 18px;
+    font-size: 15px;
+    font-weight: 800;
+    border-radius: 24px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  /* Primary Button: Electric Orange Gradient */
+  .finish-quiz-back-btn:first-child {
+    background: linear-gradient(135deg, #ff8c00 0%, #ff4500 100%);
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(255, 69, 0, 0.3);
+  }
+  
+  /* Secondary Button: Frosty Glass */
+  .finish-quiz-back-btn:last-child {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+  }
+  
+  .finish-quiz-back-btn:hover {
+    transform: translateY(-5px);
+    filter: brightness(1.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Entry Animations */
+  @keyframes dropIn {
+    from { opacity: 0; transform: translateY(-120px); }
+    to { opacity: 1; transform: translateY(-60px); }
+  }
+  
+  @keyframes cardFadeUp {
+    from { 
+      opacity: 0; 
+      transform: scale(0.9) translateY(0); 
+    }
+    to { 
+      opacity: 1; 
+      transform: scale(1) translateY(-100px); 
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 480px) {
+    .finish-quiz-result-card {
+      margin-top: -90px;
+      padding: 80px 20px 30px;
+    }
+    
+    .finish-quiz-final-score h1 {
+      font-size: 72px;
+    }
+    
+    .finish-finish-buttons {
+      flex-direction: column;
+    }
+  }

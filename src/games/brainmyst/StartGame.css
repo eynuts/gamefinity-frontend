@@ -1,0 +1,252 @@
+/* StartGame.css */
+
+/* --- Root Wrapper --- */
+.startbrain-brain-myst-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+  }
+  
+  /* --- Atmosphere Overlay --- */
+  .startbrain-brain-myst-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle, 
+      rgba(0, 0, 0, 0.2) 0%, 
+      rgba(0, 0, 0, 0.8) 100%
+    );
+    z-index: 1;
+  }
+  
+  /* --- Centered Menu Card --- */
+  .startbrain-brain-main-menu-card {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 60px;
+    border-radius: 30px;
+    
+    /* Glassmorphism Effect */
+    background: rgba(10, 15, 25, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    
+    width: 90%;
+    max-width: 480px;
+    text-align: center;
+  }
+  
+  /* --- Title Section --- */
+  .startbrain-brain-start-title {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.4));
+  }
+  
+  /* --- Subject Selection --- */
+  .startbrain-brain-subject-section {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .startbrain-brain-subject-label {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+  }
+  
+  .startbrain-brain-subject-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .startbrain-brain-subject-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .startbrain-brain-subject-btn.startbrain-active {
+    background: rgba(0, 210, 255, 0.2);
+    border-color: #00d2ff;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+  }
+  
+  /* --- Menu Actions --- */
+  .startbrain-brain-menu-actions, 
+  .custom-game-options {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 25px;
+  }
+  
+  .startbrain-brain-menu-btn {
+    width: 100%;
+    padding: 16px 0;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    border-radius: 12px;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+  
+  .startbrain-brain-start-btn {
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
+  }
+  
+  .startbrain-brain-start-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    filter: grayscale(1);
+  }
+  
+  .startbrain-brain-exit-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  /* --- Custom Game Section --- */
+  .join-lobby-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .join-lobby-section input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 12px;
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  .join-lobby-section input:focus {
+    border-color: #00d2ff;
+  }
+  
+  /* --- Lobby State --- */
+  .lobby-code-section {
+    background: rgba(0, 210, 255, 0.1);
+    border: 1px dashed #00d2ff;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .lobby-code-section p {
+    color: white;
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  .lobby-code-section strong {
+    display: block;
+    font-size: 2rem;
+    letter-spacing: 5px;
+    color: #00d2ff;
+    margin-bottom: 10px;
+  }
+  
+  .lobby-code-section button {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #00d2ff;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+  }
+  
+  /* --- Finding Players Animation --- */
+  .startbrain-loading-dots {
+    color: #00d2ff;
+    font-size: 1.5rem;
+    margin: 20px 0;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+  }
+  
+  /* --- Footer Buttons --- */
+  .startbrain-brain-footer-actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+  }
+  
+  .startbrain-brain-footer-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .startbrain-brain-footer-btn:hover {
+    color: #00d2ff;
+  }
+  
+  /* --- Mobile Fixes --- */
+  @media (max-width: 600px) {
+    .startbrain-brain-main-menu-card {
+      padding: 35px 25px;
+      width: 95%;
+    }
+    
+    .startbrain-brain-start-title {
+      font-size: 1.4rem;
+    }
+  }

@@ -1,0 +1,390 @@
+/* src/admin/AdminDashboard.css */
+
+/* --- Keyframe Animations --- */
+@keyframes slideUpFade {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slowPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+  }
+  
+  /* --- Base Container --- */
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 100%;
+    color: #1a202c;
+    animation: slideUpFade 0.6s ease-out forwards;
+    padding: 5px; /* Prevent shadow clipping */
+  }
+  
+  /* --- Header & Top Nav --- */
+  .dashboard-top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e2e8f0;
+    margin-top: -100px;  }
+  
+  .welcome-text h1 {
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: 800;
+    color: #1a202c;
+    letter-spacing: -0.02em;
+  }
+  
+  .welcome-text p {
+    margin: 4px 0 0 0;
+    color: #718096;
+    font-size: 0.95rem;
+  }
+  
+  .welcome-text span {
+    font-weight: 700;
+    color: #3182ce;
+    position: relative;
+  }
+  
+  .date-display {
+    background: #ffffff;
+    color: #2b6cb0;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+  
+  .date-display:hover {
+    background: #ebf8ff;
+    border-color: #bee3f8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  }
+  
+  /* --- Section Headers --- */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 18px;
+  }
+  
+  .section-header svg {
+    color: #3182ce;
+    font-size: 1.1rem;
+  }
+  
+  /* --- User Analytics Grid --- */
+  .compact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  
+  /* --- Card Base Styles --- */
+  .c-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .c-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+    border-color: #cbd5e0;
+  }
+  
+  /* Blue Gradient Card Enhancement */
+  .c-card.blue-gradient {
+    background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 10px 20px rgba(49, 130, 206, 0.3);
+  }
+  
+  .c-card.blue-gradient:hover {
+    box-shadow: 0 15px 25px rgba(49, 130, 206, 0.4);
+    filter: brightness(1.1);
+  }
+  
+  .c-card.blue-gradient::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to bottom right, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    transition: 0.5s;
+  }
+  
+  .c-card.blue-gradient:hover::after {
+    left: 100%;
+  }
+  
+  /* Icon Wrappers */
+  .c-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 1.4rem;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .c-card:hover .c-icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .c-icon-wrapper.gray {
+    background: #f7fafc;
+    color: #3182ce;
+  }
+  
+  /* Info Labels */
+  .c-info label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #718096;
+    margin-bottom: 2px;
+  }
+  
+  .c-card.blue-gradient .c-info label {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .c-info strong {
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  
+  /* --- Lower Row --- */
+  .dashboard-lower-row {
+    display: grid;
+    grid-template-columns: 1.8fr 1.2fr;
+    gap: 24px;
+    margin-top: 10px;
+  }
+  
+  /* --- Revenue Specifics --- */
+  .revenue-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .rev-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-left: 5px solid #48bb78;
+    padding: 24px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .rev-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+  }
+  
+  .rev-icon-circle {
+    width: 54px;
+    height: 54px;
+    background: #f0fff4;
+    color: #48bb78;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    transition: all 0.5s ease;
+  }
+  
+  .rev-card:hover .rev-icon-circle {
+    background: #48bb78;
+    color: white;
+    transform: rotateY(360deg);
+  }
+  
+  .rev-icon-circle.blue-icon {
+    background: #ebf8ff;
+    color: #3182ce;
+  }
+  
+  .rev-card:nth-child(2):hover .rev-icon-circle.blue-icon {
+    background: #3182ce;
+    color: white;
+  }
+  
+  .rev-card:nth-child(2) {
+    border-left-color: #3182ce;
+  }
+  
+  .rev-details label {
+    font-size: 0.85rem;
+    color: #718096;
+    font-weight: 700;
+  }
+  
+  .rev-details p {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #2d3748;
+  }
+  
+  /* --- Subscription Status Pills --- */
+  .subs-status-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .status-pill {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .status-pill:hover {
+    transform: translateX(8px);
+    filter: brightness(0.98);
+  }
+  
+  .pill-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  
+  .status-pill svg {
+    font-size: 1.1rem;
+  }
+  
+  .status-pill.warning {
+    background: #fffaf0;
+    color: #9c4221;
+    border-color: #feebc8;
+  }
+  
+  .status-pill.warning svg {
+    animation: slowPulse 2s infinite ease-in-out;
+  }
+  
+  .status-pill.success {
+    background: #f0fff4;
+    color: #22543d;
+    border-color: #c6f6d5;
+  }
+  
+  .status-pill.danger {
+    background: #fff5f5;
+    color: #822727;
+    border-color: #fed7d7;
+  }
+  
+  .status-pill strong {
+    font-size: 1.3rem;
+    font-weight: 800;
+    background: rgba(255,255,255,0.5);
+    padding: 2px 10px;
+    border-radius: 8px;
+  }
+  
+  /* --- Decorative Elements & Tooltips (Optional) --- */
+  .stat-trend {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+  
+  /* --- Responsive Adjustments --- */
+  @media (max-width: 1280px) {
+    .compact-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .dashboard-lower-row {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .compact-grid {
+      grid-template-columns: 1fr;
+    }
+    .revenue-grid {
+      grid-template-columns: 1fr;
+    }
+    .dashboard-top-nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+  }
+  
+  /* --- Custom Scrollbar for the container --- */
+  .dashboard-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .dashboard-container::-webkit-scrollbar-thumb {
+    background-color: #cbd5e0;
+    border-radius: 10px;
+  }

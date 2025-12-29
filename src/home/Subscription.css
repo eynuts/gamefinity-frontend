@@ -1,0 +1,257 @@
+/* src/home/Subscription.css */
+
+.sub-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 15, 30, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(8px);
+    padding: 15px;
+  }
+  
+  .sub-modal-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 380px; /* Scaled down from 440px */
+    border-radius: 20px; /* Slightly tighter radius */
+    padding: 24px; /* Scaled down from 35px */
+    position: relative;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+  }
+  
+  /* --- Header & Navigation --- */
+  .sub-header {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  
+  .rocket-icon {
+    font-size: 2rem; /* Scaled down */
+    color: #3b82f6;
+    margin-bottom: 8px;
+  }
+  
+  .sub-title {
+    font-size: 1.35rem; /* Scaled down */
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0;
+  }
+  
+  .step-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #e2e8f0;
+  }
+  
+  .dot.active {
+    width: 18px;
+    border-radius: 10px;
+    background: #3b82f6;
+  }
+  
+  .sub-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+  }
+  
+  /* --- Step 1: Plan Cards --- */
+  .sub-plan-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .sub-plan-card {
+    border: 1.5px solid #f1f5f9;
+    border-radius: 14px;
+    padding: 14px 18px; /* More compact */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  
+  .sub-plan-card.active {
+    border-color: #3b82f6;
+    background: #f8faff;
+  }
+  
+  .plan-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .plan-price {
+    font-size: 1.5rem; /* Scaled down */
+    font-weight: 900;
+    color: #1e293b;
+    margin: 2px 0;
+  }
+  
+  .plan-price span {
+    font-size: 0.85rem;
+    color: #94a3b8;
+  }
+  
+  .plan-desc {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin: 0;
+  }
+  
+  .badge-save {
+    position: absolute;
+    top: -8px;
+    left: 15px;
+    background: #10b981;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+  
+  /* --- Step 2: Payment Details --- */
+  .payment-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .btn-back-step {
+    background: none;
+    border: none;
+    color: #3b82f6;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .summary-pill {
+    background: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    color: #475569;
+  }
+  
+  .sub-qr-section {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .qr-wrapper {
+    background: #f8fafc;
+    padding: 10px;
+    border-radius: 12px;
+    display: inline-block;
+    border: 1px solid #edf2f7;
+  }
+  
+  .sub-qr-image {
+    width: 130px; /* Scaled down from 160px */
+    height: 130px;
+    display: block;
+  }
+  
+  .sub-qr-instruction {
+    font-size: 0.85rem;
+    margin-top: 8px;
+    color: #475569;
+  }
+  
+  .sub-input-group {
+    margin-bottom: 15px;
+  }
+  
+  .sub-input-group label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .sub-input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+  }
+  
+  /* --- Status Views --- */
+  .status-view {
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  .status-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+  
+  .sub-subtitle {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 20px;
+  }
+  
+  /* --- Buttons --- */
+  .btn-primary-custom {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-primary-custom:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+  }
+  
+  .btn-secondary-custom {
+    background: #f1f5f9;
+    color: #475569;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    width: 100%;
+    font-weight: 600;
+    cursor: pointer;
+  }

@@ -1,0 +1,290 @@
+/* src/admin/AdminRevenue.css */
+
+/* REVENUE ANALYTICS ENGINE
+   - Layout: Dashboard Grid + Scrollable Ledger
+   - Theme: Financial Growth (Emerald / Slate)
+*/
+
+:root {
+    --rev-bg: #f8fafc;
+    --rev-card-bg: #ffffff;
+    --rev-success: #10b981;
+    --rev-accent: #6366f1;
+    --rev-text-main: #0f172a;
+    --rev-text-muted: #64748b;
+    --rev-border: #e2e8f0;
+    --rev-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-revenue-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 24px 30px;
+    background-color: var(--rev-bg);
+    gap: 24px;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* --- Header Section --- */
+  .revenue-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -100px;
+    margin-bottom: -70px;
+  }
+  
+  .header-title h2 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--rev-text-main);
+    letter-spacing: -0.02em;
+  }
+  
+  .header-title p {
+    margin: 4px 0 0 0;
+    color: var(--rev-text-muted);
+  }
+  
+  .total-wallet-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--rev-border);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    color: var(--rev-success);
+    font-size: 0.9rem;
+  }
+  
+  /* --- Revenue Stats Grid --- */
+  .revenue-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .rev-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid var(--rev-border);
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .rev-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--rev-shadow);
+  }
+  
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-right: 16px;
+  }
+  
+  /* Card Specific Colors */
+  .daily .card-icon { background: #ecfdf5; color: #10b981; }
+  .monthly .card-icon { background: #eff6ff; color: #3b82f6; }
+  .yearly .card-icon { background: #f5f3ff; color: #8b5cf6; }
+  
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .card-info .label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--rev-text-muted);
+  }
+  
+  .card-info .amount {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 4px 0 12px 0;
+    color: var(--rev-text-main);
+  }
+  
+  .trend-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: 0.2;
+    font-size: 1.5rem;
+  }
+  
+  /* --- Card Action Buttons --- */
+  .card-actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .card-actions button {
+    flex: 1;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--rev-border);
+    background: #f8fafc;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: var(--rev-text-muted);
+    transition: all 0.2s;
+  }
+  
+  .card-actions button:hover {
+    background: var(--rev-text-main);
+    color: white;
+    border-color: var(--rev-text-main);
+  }
+  
+  /* --- Transaction Table Section --- */
+  .revenue-table-section {
+    flex: 1;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--rev-border);
+    box-shadow: var(--rev-shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .table-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--rev-border);
+  }
+  
+  .table-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--rev-text-main);
+  }
+  
+  .table-wrapper {
+    overflow-y: auto;
+    flex: 1;
+  }
+  
+  .revenue-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .revenue-table thead th {
+    position: sticky;
+    top: 0;
+    background: #f8fafc;
+    padding: 14px 24px;
+    text-align: left;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--rev-text-muted);
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--rev-border);
+    z-index: 10;
+  }
+  
+  .revenue-row {
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.2s;
+  }
+  
+  .revenue-row:hover {
+    background: #f8fafc;
+  }
+  
+  .revenue-table td {
+    padding: 16px 24px;
+    vertical-align: middle;
+  }
+  
+  /* User Column */
+  .user-col {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .u-name {
+    font-weight: 700;
+    color: var(--rev-text-main);
+  }
+  
+  .u-email {
+    font-size: 0.8rem;
+    color: var(--rev-text-muted);
+  }
+  
+  /* Plan Pills */
+  .plan-pill {
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  
+  .plan-pill.monthly { background: #fff7ed; color: #c2410c; }
+  .plan-pill.yearly { background: #f0fdf4; color: #15803d; }
+  
+  .amount-col {
+    font-weight: 700;
+    color: var(--rev-success);
+  }
+  
+  .date-col {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--rev-text-muted);
+  }
+  
+  /* --- Loader --- */
+  .revenue-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+  }
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e2e8f0;
+    border-top-color: var(--rev-success);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* --- Responsive --- */
+  @media (max-width: 1024px) {
+    .revenue-stats-grid { grid-template-columns: 1fr; }
+    .admin-revenue-container { overflow-y: auto; height: auto; }
+    .revenue-table-section { min-height: 500px; }
+  }

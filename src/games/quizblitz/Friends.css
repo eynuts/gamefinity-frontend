@@ -1,0 +1,289 @@
+/* Friends.css */
+
+/* THE GLASS CARD 
+   Positioned inside .main-options-container */
+   .friends-glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+    
+    width: 320px; 
+    /* Reduced padding from 40px to 25px to save vertical space */
+    padding: 25px 30px;
+    border-radius: 40px;
+    
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    /* FIX: Prevents the card from pushing the footer off-screen */
+    flex-shrink: 1;
+    max-height: 70vh; 
+    animation: cardEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* INNER HEADER */
+.friends-header-inner {
+    /* Reduced margin from 30px to 15px */
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.friends-icon-wrapper {
+    /* Reduced icon size from 80px to 60px */
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 5px;
+    filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.6));
+}
+
+.friends-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.friends-header-inner h2 {
+    /* Reduced font size slightly */
+    font-size: 1.5em;
+    font-weight: 800;
+    margin: 0;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* BUTTONS */
+.friends-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* Tighter gap from 15px to 10px */
+    gap: 10px;
+}
+
+.friends-option-button {
+    width: 100%;
+    /* Reduced padding from 18px to 14px */
+    padding: 14px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.create-game {
+    background: linear-gradient(135deg, #42A5F5, #29B6F6);
+    color: white;
+    box-shadow: 0 8px 20px rgba(41, 182, 246, 0.3);
+}
+
+.join-game {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.friends-option-button:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.1);
+}
+
+/* FOOTER ELEMENTS */
+.profile-initial {
+    width: 35px;
+    height: 35px;
+    background: #FFC107;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 900;
+}
+
+.friends-back-btn {
+    background: rgba(255, 87, 34, 0.15);
+    border: 2px solid rgba(255, 87, 34, 0.5);
+    color: #FF5722;
+    padding: 8px 18px; /* Slightly tighter padding */
+    border-radius: 15px;
+    font-weight: 800;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.friends-back-btn:hover {
+    background: #FF5722;
+    color: white;
+    transform: scale(1.05);
+}
+/* ===============================
+   JOIN LOBBY MODAL (GLASS STYLE)
+   =============================== */
+
+   .join-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.join-modal {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+    
+    border-radius: 30px;
+    padding: 26px 28px;
+    width: 320px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+
+    text-align: center;
+    animation: modalPop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.join-modal h3 {
+    margin: 0 0 6px;
+    font-size: 1.4em;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.join-modal p {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-bottom: 14px;
+    color: white;
+}
+
+/* INPUT */
+.join-modal input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.25);
+    color: white;
+
+    font-size: 1.1em;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 3px;
+    outline: none;
+
+    margin-bottom: 18px;
+}
+
+.join-modal input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ACTION BUTTONS */
+.join-modal-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-cancel,
+.modal-join {
+    flex: 1;
+    padding: 12px;
+    border-radius: 16px;
+    border: none;
+    font-weight: 900;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* CANCEL */
+.modal-cancel {
+    background: rgba(255, 87, 34, 0.15);
+    border: 2px solid rgba(255, 87, 34, 0.5);
+    color: #FF5722;
+}
+
+.modal-cancel:hover {
+    background: #FF5722;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* JOIN */
+.modal-join {
+    background: linear-gradient(135deg, #42A5F5, #29B6F6);
+    color: white;
+    box-shadow: 0 8px 20px rgba(41, 182, 246, 0.4);
+}
+
+.modal-join:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+/* ANIMATION */
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .join-modal {
+        width: 85%;
+        padding: 22px 18px;
+    }
+}
+
+/* ANIMATION */
+@keyframes cardEntrance {
+    from { 
+        opacity: 0; 
+        transform: scale(0.9) translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1) translateY(0); 
+    }
+}
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 480px) {
+    .friends-glass-card {
+        width: 85%;
+        padding: 20px 15px;
+    }
+    .friends-header-inner h2 {
+        font-size: 1.3em;
+    }
+    .friends-icon-wrapper {
+        width: 50px;
+        height: 50px;
+    }
+}

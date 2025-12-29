@@ -1,0 +1,223 @@
+/* --- Global Screen Setup --- */
+.quizblitz-screen {
+    background-image: url("../../assets/quizblitz/bg.png");
+    /* Full screen size */
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; 
+    
+    /* Background properties */
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Layout properties - Use flex for centering/positioning elements */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    /* FIX: Use space-between to push Header to top and Footer to bottom */
+    justify-content: space-between; 
+    
+    position: relative; 
+    /* *** FIX: Changed bottom padding from 20px to 0 *** */
+    padding: 20px 20px 0; 
+    box-sizing: border-box;
+    
+    /* Set default text color for visibility */
+    color: white; 
+    font-family: 'Arial', sans-serif; 
+}
+    
+/* --- Header Styling (No changes needed) --- */
+.game-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    padding-top: 10px; 
+    padding-bottom: 10px;
+}
+    
+.quizblitz-logo {
+    width: 300px;
+    height: auto; 
+    margin-bottom: 0px;
+}
+    
+.game-tagline {
+    font-size: 1.2em; 
+    font-weight: 500; 
+    letter-spacing: 2px;
+    margin: 0;
+    margin-top: 5px; 
+    color: white; 
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.9); 
+}
+    
+/* --- Main Options Styling (No changes needed) --- */
+.main-options-container {
+    display: flex;
+    gap: 20px; 
+    flex-grow: 1; 
+    align-items: center; 
+    position: relative;
+    z-index: 1;
+}
+    
+.option-button {
+    border: none;
+    border-radius: 30px;
+    padding: 20px 30px;
+    width: 280px; 
+    height: 150px; 
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+}
+    
+.option-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+    
+.option-button .icon {
+    width: 100px; 
+    height: 100px;
+    margin-bottom: 5px;
+}
+
+.option-button .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+    
+.option-button .text {
+    margin-top: 5px;
+    font-size: 0.8em; 
+    font-weight: 600;
+}
+    
+.play-solo {
+    background: linear-gradient(135deg, #FFB74D, #81C784); 
+}
+    
+.challenge-friends {
+    background: linear-gradient(135deg, #66BB6A, #E91E63, #9C27B0); 
+}
+    
+.global-game {
+    background: linear-gradient(135deg, #42A5F5, #29B6F6);
+}
+    
+    
+/* --- Footer Styling (Player Info & Secondary Nav) --- */
+.quizblitz-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* *** FIX: Changed padding to only add vertical space to content inside the footer. *** */
+    padding: 10px 20px; 
+    
+    /* Ensure footer does not interfere with flex-grow of main content */
+    flex-shrink: 0; 
+}
+    
+/* Player Profile (No changes needed) */
+.player-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right: 5px;
+}
+    
+.player-name {
+    font-size: 1.1em;
+    margin-right: 15px;
+}
+    
+.player-stats {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9em;
+    
+    /* FIX 2: Background removed for seamless look (Kept from previous correction) */
+    background: none; 
+    padding: 0; 
+    border-radius: 0;
+}
+
+/* Color-coding for stats to match the gold/star look (No changes needed) */
+.stat-coin, .stat-level {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #FFC107; /* Gold color */
+}
+
+.message-icon {
+    font-size: 1.2em;
+    margin-left: 10px;
+    cursor: pointer;
+}
+    
+/* Secondary Navigation Icons (No changes needed) */
+.secondary-nav {
+    display: flex;
+    gap: 15px; 
+    align-items: center;
+}
+    
+.nav-icon-container { 
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+    
+.nav-icon {
+    font-size: 1.2em; 
+    opacity: 0.8;
+}
+/* Footer icons as images */
+.nav-icon img {
+    width: 50px;   /* Adjust width as needed */
+    height: 50px;  /* Adjust height as needed */
+    object-fit: contain;
+}
+
+.nav-icon:hover {
+    opacity: 1;
+}
+
+.nav-label {
+    display: none; 
+}
+.profile-logo-img {
+    width: 35px;       /* adjust size as needed */
+    height: 35px;
+    border-radius: 50%; /* makes it circular */
+    object-fit: cover;
+    margin-right: 5px;
+  }
+  

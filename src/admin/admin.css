@@ -1,0 +1,217 @@
+/* src/admin/admin.css */
+
+:root {
+  --admin-bg: #f0f2f5;
+  --sidebar-bg: #1a252f;
+  --sidebar-text: #adb5bd;
+  --sidebar-text-active: #ffffff;
+  --accent-color: #3498db;
+  --hover-color: #2c3e50;
+  --danger-color: #e74c3c;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.admin-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--admin-bg);
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden; /* Lock scroll inside admin container */
+}
+/* --- Sidebar Logic --- */
+.admin-sidebar {
+  width: 260px;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: var(--transition);
+  flex-shrink: 0;
+  z-index: 1000;
+  position: relative;
+  box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+}
+
+/* Fix: Sidebar closed state hides everything inside */
+.admin-sidebar.closed {
+  width: 0;
+  transform: translateX(-100%);
+  visibility: hidden; /* Ensures buttons/X are not interactable or seen */
+  opacity: 0;
+}
+
+.admin-sidebar-header {
+  padding: 0 20px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-sidebar-logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.admin-sidebar-burger {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.admin-sidebar-burger:hover {
+  background: var(--danger-color);
+}
+
+/* --- Menu Buttons --- */
+.admin-sidebar-menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 12px;
+}
+
+.menu-items button {
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  color: var(--sidebar-text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.menu-items button svg {
+  font-size: 1.1rem;
+  min-width: 20px;
+}
+
+.menu-items button:hover {
+  background-color: var(--hover-color);
+  color: var(--sidebar-text-active);
+}
+
+.menu-items button.admin-active-menu {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* --- Sidebar Footer --- */
+.sidebar-footer {
+  padding: 15px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-home-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: rgba(255,255,255,0.05);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.admin-home-btn:hover {
+  background-color: #444;
+  border-color: #666;
+}
+
+/* --- Main Viewport Area --- */
+.admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.admin-content-body {
+  margin: 20px;
+  background: #ffffff;
+  flex: 1;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.08);
+  
+  /* Internal Scroll Only */
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+/* --- Floating Open Button --- */
+.floating-burger {
+  position: absolute; /* Keep it relative to the main container */
+  top: 25px;
+  left: 25px;
+  z-index: 500;
+  width: 45px;
+  height: 45px;
+  background: var(--sidebar-bg);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: var(--transition);
+}
+
+.floating-burger:hover {
+  background: var(--accent-color);
+  transform: scale(1.05);
+}
+
+/* Custom Scrollbar for the Content Body */
+.admin-content-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.admin-content-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-content-body::-webkit-scrollbar-thumb {
+  background: #d1d8e0;
+  border-radius: 10px;
+}
+
+.admin-content-body::-webkit-scrollbar-thumb:hover {
+  background: #b1b9c1;
+}

@@ -1,0 +1,203 @@
+/* FriendsLobby.css */
+
+/* THE GLASS LOBBY CARD (Players List) */
+.friendslobby-players-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+    /* Scaled down width from 340px to 310px */
+    width: 310px;
+    /* Reduced padding to save vertical space */
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 1;
+    /* Reduced height to ensure footer visibility */
+    max-height: 45vh; 
+    animation: lobbyEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.friendslobby-players-card h3, 
+.friendslobby-category-card h3 {
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #00d2ff; 
+    margin-bottom: 12px;
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+
+/* SCROLLABLE PLAYER LIST */
+.friendslobby-players-card ul {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto; 
+    padding-right: 5px;
+}
+
+/* Custom scrollbar */
+.friendslobby-players-card ul::-webkit-scrollbar {
+    width: 4px;
+}
+.friendslobby-players-card ul::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.friendslobby-players-card li {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 6px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9em;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: playerSlideIn 0.4s ease-out forwards;
+}
+
+.friendslobby-players-card li::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    background: #00d2ff;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 8px #00d2ff;
+    flex-shrink: 0;
+}
+
+/* CATEGORY CARD STYLING */
+.friendslobby-category-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+    width: 310px;
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    animation: lobbyEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.friendslobby-categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.friendslobby-category-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.friendslobby-category-btn img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.friendslobby-category-btn span {
+    color: white;
+    font-size: 0.7em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.friendslobby-category-btn.active {
+    background: rgba(0, 210, 255, 0.2);
+    border-color: #00d2ff;
+    box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+    animation: pulseGlow 2s infinite;
+}
+
+/* FOOTER & BUTTONS */
+.game-footer {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.friendslobby-start-btn, 
+.friendslobby-back-btn {
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.friendslobby-start-btn {
+    background: linear-gradient(135deg, #42A5F5, #29B6F6);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(41, 182, 246, 0.3);
+}
+
+.friendslobby-back-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.friendslobby-hint {
+    font-size: 0.75em;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* ANIMATIONS (Keep these the same) */
+@keyframes lobbyEntrance {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes playerSlideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 8px rgba(0, 210, 255, 0.3); }
+    50% { box-shadow: 0 0 15px rgba(0, 210, 255, 0.6); }
+    100% { box-shadow: 0 0 8px rgba(0, 210, 255, 0.3); }
+}
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 768px) {
+    .main-options-container {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .friendslobby-players-card, 
+    .friendslobby-category-card {
+        width: 85%;
+        max-height: 40vh;
+    }
+}

@@ -1,0 +1,236 @@
+/* ==========================================================
+   BrainSettlement.css - FINAL COMPACT VERSION
+   ========================================================== */
+
+   .brainsettlement-wrapper {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    z-index: 1000;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    animation: fadeInWrapper 0.5s ease-out;
+  }
+  
+  @keyframes fadeInWrapper {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .braingame-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(2, 6, 23, 0.4) 0%, rgba(2, 6, 23, 0.97) 100%);
+    z-index: 1;
+  }
+  
+  /* --- Optimized Settlement Card --- */
+  .settlement-card {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 360px; /* Thinner profile for better vertical fit */
+    max-height: 90vh; /* Absolute guard against screen overflow */
+    background: rgba(10, 15, 25, 0.95);
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    border-radius: 20px;
+    padding: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+  }
+  
+  .settlement-header {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  
+  .result-title {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #00d2ff;
+    text-transform: uppercase;
+    margin: 0;
+    text-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+  }
+  
+  .spy-reveal-inline {
+    margin-top: 5px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 1px;
+  }
+  
+  .spy-reveal-inline span {
+    color: #ff4757;
+    font-weight: 900;
+    margin-left: 4px;
+  }
+  
+  /* --- Player List (Flex-Shrinkable) --- */
+  .settlement-players-list {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 15px;
+    flex: 1 1 auto; /* Allows the list to grow/shrink based on space */
+    min-height: 0;   /* Essential for nested scroll area */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 0 4px;
+  }
+  
+  .list-header h3 {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+  }
+  
+  .count-badge {
+    font-size: 0.65rem;
+    color: #00d2ff;
+    font-weight: 800;
+    background: rgba(0, 210, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  
+  .players-scroll-area {
+    overflow-y: auto;
+    flex: 1; /* Occupies remaining space inside the list box */
+    padding-right: 4px;
+  }
+  
+  .players-scroll-area::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  .players-scroll-area::-webkit-scrollbar-thumb {
+    background: rgba(0, 210, 255, 0.2);
+    border-radius: 10px;
+  }
+  
+  /* --- Row Styling --- */
+  .settlement-player-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    margin-bottom: 4px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid transparent;
+  }
+  
+  .settlement-player-row.ready {
+    background: rgba(0, 210, 255, 0.06);
+    border-color: rgba(0, 210, 255, 0.2);
+  }
+  
+  .player-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .status-dot.active {
+    background: #00d2ff;
+    box-shadow: 0 0 8px #00d2ff;
+  }
+  
+  .player-name {
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  
+  .status-label {
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .settlement-player-row.ready .status-label {
+    color: #00d2ff;
+  }
+  
+  /* --- Actions Area --- */
+  .settlement-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto; /* Pushes buttons to the bottom of the card */
+  }
+  
+  .btn-rematch {
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .btn-rematch:disabled {
+    filter: grayscale(1);
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .btn-rematch.is-waiting {
+    background: rgba(0, 210, 255, 0.05);
+    border: 1px dashed rgba(0, 210, 255, 0.5);
+    color: #00d2ff;
+  }
+  
+  .btn-exit {
+    background: transparent;
+    border: 1px solid rgba(255, 71, 87, 0.3);
+    color: #ff4757;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .btn-exit:hover {
+    background: rgba(255, 71, 87, 0.1);
+  }
+  
+  /* --- Micro-Scaling for Short Viewports --- */
+  @media (max-height: 680px) {
+    .settlement-card { padding: 15px; }
+    .result-title { font-size: 1.1rem; }
+    .settlement-players-list { margin-bottom: 8px; }
+    .btn-rematch { padding: 10px; font-size: 0.8rem; }
+    .btn-exit { padding: 8px; }
+  }
