@@ -53,7 +53,7 @@ const AdminSubscription = ({ subscriptions, setSubscriptions }) => {
   // Email Notification Logic
   const sendEmail = async (email, subject, message) => {
     try {
-      const res = await fetch("http://localhost:5000/send-subscription-email", {
+      const res = await fetch("https://gamefinity-backend.onrender.com/send-subscription-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, subject, message }),
@@ -239,5 +239,6 @@ const AdminSubscription = ({ subscriptions, setSubscriptions }) => {
     </div>
   );
 };
+
 
 export default AdminSubscription;
