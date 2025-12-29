@@ -13,7 +13,7 @@ import ItApp from "../games/itapp/itapp";
 import QuizBlitzMain from "../games/quizblitz/QuizBlitzMain";
 import { auth, provider } from "../firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
-import { ref, set, child, onValue } from "firebase/database";
+import { ref, set, child, onValue, get } from "firebase/database";
 import { db } from "../firebase"; // make sure you have db exported from firebase.js
 import Admin from "../admin/Admin";
 import Subscription from "./Subscription";
@@ -443,3 +443,4 @@ if (showAdminPanel) {
     </div>
   );
 }
+
