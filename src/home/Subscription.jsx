@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import monthlyQR from "../assets/monthly.png";
 import yearlyQR from "../assets/yearly.png";
 import { db, auth } from "../firebase";
-import { ref, set, onValue, update } from "firebase/database";
+import { ref, set, onValue, update, get } from "firebase/database";
 import "./Subscription.css";
 import { 
   FaCheckCircle, 
@@ -271,3 +271,4 @@ export default function Subscription({ show, onClose }) {
     </div>
   );
 }
+
