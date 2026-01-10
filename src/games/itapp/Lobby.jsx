@@ -1,6 +1,6 @@
 // src/games/itapp/Lobby.jsx
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import NebulaBackground from "../../assets/itapp/bg.png";
 import "./Lobby.css";
 import Game from "./Game";
@@ -60,6 +60,11 @@ export default function Lobby({ onBack, mode = "create", userData, socket, onExi
         const available = lobbies.find(l => l.players.length < 8);
         if (available) {
           socket.emit("joinLobby", { lobbyId: available.id, username: userData.username });
+        } else {
+            // Handle no lobby found if needed, or maybe create one fallback
+            // For now, let's just wait or maybe alert
+             alert("No available lobbies found. Please try creating one.");
+             onBack();
         }
       });
     }
@@ -151,6 +156,19 @@ export default function Lobby({ onBack, mode = "create", userData, socket, onExi
   /* -------------------------------
      UI
   ------------------------------- */
+  if (!lobby) {
+    return (
+        <div className="lobby-page-container">
+            <div className="lobby-background" style={{ backgroundImage: `url(${NebulaBackground})` }}>
+                 <div className="lobby-loading">
+                    <div className="spinner"></div>
+                    <div className="loading-text">Connecting to Lobby...</div>
+                 </div>
+            </div>
+        </div>
+    );
+  }
+
   return (
     <div className="lobby-page-container">
       <div className="lobby-background" style={{ backgroundImage: `url(${NebulaBackground})` }}>
@@ -159,6 +177,11 @@ export default function Lobby({ onBack, mode = "create", userData, socket, onExi
             <div className="lobby-logo-text"><span className="lobby-blue">iT</span>-APP</div>
             <div className="lobby-subtitle">Interactive Trivia & Playful Platform</div>
           </div>
+          
+          <div className="lobby-room-info">
+             <div className="lobby-room-code">ROOM: {lobby.id.slice(0, 6).toUpperCase()}</div>
+             <div className="lobby-player-count">PLAYERS: {lobby.players.length}/8</div>
+          </div>
 
           <motion.button
             className="lobby-back-btn"
@@ -166,7 +189,7 @@ export default function Lobby({ onBack, mode = "create", userData, socket, onExi
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            ← Back
+            ← Exit
           </motion.button>
         </header>
 
@@ -176,17 +199,30 @@ export default function Lobby({ onBack, mode = "create", userData, socket, onExi
               {Array(8).fill(0).map((_, i) => {
                 const player = lobby?.players?.[i];
                 return (
-                  <div key={i} className="lobby-player-slot">
+                  <motion.div 
+                    key={i} 
+                    className={`lobby-player-slot ${player ? 'occupied' : 'empty'} ${player?.id === lobby.hostId ? 'host-slot' : ''}`}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: i * 0.05 }}
+                  >
                     {player ? (
                       <>
-                        <div>👤</div>
-                        <div>{player.username}</div>
-                        <div>{player.id === lobby.hostId ? "HOST" : player.ready ? "Ready" : "Not Ready"}</div>
+                        <div className="lobby-slot-avatar">
+                             {/* Placeholder avatar or initial */}
+                             {player.username.charAt(0).toUpperCase()}
+                        </div>
+                        <div className="lobby-slot-info">
+                            <div className="lobby-slot-name">{player.username}</div>
+                            <div className={`lobby-slot-status ${player.id === lobby.hostId ? "status-host" : player.ready ? "status-ready" : "status-waiting"}`}>
+                                {player.id === lobby.hostId ? "HOST" : player.ready ? "READY" : "WAITING"}
+                            </div>
+                        </div>
                       </>
                     ) : (
-                      <div className="empty-text">JOIN SLOT</div>
+                      <div className="empty-text">OPEN SLOT</div>
                     )}
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
@@ -197,6 +233,8 @@ export default function Lobby({ onBack, mode = "create", userData, socket, onExi
                   className="lobby-start-game-btn"
                   onClick={startGame}
                   disabled={!canStartGame()}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 >
                   START GAME
                 </motion.button>
@@ -204,26 +242,39 @@ export default function Lobby({ onBack, mode = "create", userData, socket, onExi
                 <motion.button
                   className={`lobby-start-game-btn ${playerReady ? "ready" : ""}`}
                   onClick={toggleReady}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 >
-                  {playerReady ? "READY" : "NOT READY"}
+                  {playerReady ? "READY!" : "CLICK TO READY"}
                 </motion.button>
               )}
+               {!isHost && !playerReady && <div className="lobby-waiting-text">Waiting for you to be ready...</div>}
+               {!isHost && playerReady && <div className="lobby-waiting-text">Waiting for host to start...</div>}
+               {isHost && !canStartGame() && <div className="lobby-waiting-text">Waiting for players...</div>}
             </div>
           </div>
 
           <div className="lobby-sidebar">
-            <div className="lobby-section-title">CATEGORY SELECTION</div>
-            <ul>
+            <div className="lobby-section-title">GAME CATEGORIES</div>
+            <ul className="lobby-category-list">
               {categoriesState.map((c, i) => (
-                <li
+                <motion.li
                   key={i}
+                  className={`lobby-category-item ${c.selected ? 'selected' : ''}`}
                   onClick={() => toggleCategory(i)}
                   style={{ cursor: isHost ? "pointer" : "default" }}
+                  whileHover={isHost ? { x: 5, backgroundColor: "rgba(255,255,255,0.1)" } : {}}
                 >
-                  {c.selected ? "✅" : "⬜"} {c.name}
-                </li>
+                  <div className={`checkbox-indicator ${c.selected ? 'checked' : ''}`}></div>
+                  <span className="category-name">{c.name}</span>
+                </motion.li>
               ))}
             </ul>
+             <div className="lobby-sidebar-footer">
+                <div className="lobby-tip">
+                    <strong>Tip:</strong> {isHost ? "Select categories to include in the game." : "Host chooses the categories."}
+                </div>
+            </div>
           </div>
         </div>
       </div>
