@@ -197,3 +197,65 @@ footer {
     border-radius: 15px;
     border: 1px solid #00c6ff;
 }
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: rgba(0, 4, 40, 0.95); /* Dark background for mobile menu */
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 15px;
+        border: 1px solid rgba(0, 198, 255, 0.3);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .navbar-nav .nav-item {
+        margin: 10px 0;
+    }
+    
+    .navbar-nav .btn {
+        width: 100%; /* Full width buttons on mobile */
+        margin: 5px 0 !important; /* Override margin utility classes */
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 80px 20px 40px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .game-section {
+        padding: 30px 15px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    .logo-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .game-card {
+        margin-bottom: 10px; /* Adjust spacing between stacked cards */
+    }
+
+    .game-card img {
+        height: 200px; /* Reduce image height on mobile */
+    }
+    
+    footer {
+        margin-top: 30px;
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+}
